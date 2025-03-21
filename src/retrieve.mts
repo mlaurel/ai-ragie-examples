@@ -1,4 +1,13 @@
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
 const apiKey = process.env.RAGIE_API_KEY;
+
+if (!apiKey) {
+    console.error("RAGIE_API_KEY is required");
+    process.exit(1);
+  }
 
 const response = await fetch("https://api.ragie.ai/retrievals", {
   method: "POST",

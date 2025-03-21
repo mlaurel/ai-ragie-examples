@@ -2,6 +2,9 @@ import fs from "fs";
 import { readFile } from "node:fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 path.dirname(fileURLToPath(import.meta.url));
 

@@ -1,9 +1,18 @@
 import { writeFileSync } from "fs";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const DOWNLOAD_FOLDER = "data/downloads";
 const apiKey = process.env.RAGIE_API_KEY;
 const url = new URL("https://api.ragie.ai/documents");
 url.searchParams.set("filter", JSON.stringify({ scope: "tutorial" }));
+
+if (!apiKey) {
+    console.error("RAGIE_API_KEY is required");
+    process.exit(1);
+  }
+
 
 const documentListResponse = await fetch(url, {
   headers: { authorization: `Bearer ${apiKey}` },

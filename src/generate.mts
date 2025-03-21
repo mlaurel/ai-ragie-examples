@@ -1,7 +1,15 @@
 import OpenAI from "openai";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const ragieApiKey = process.env.RAGIE_API_KEY;
 const openAiApiKey = process.env.OPENAI_API_KEY;
+
+if (!ragieApiKey || !openAiApiKey) {
+    console.error('Missing required API keys in .env file');
+    process.exit(1);
+}
 
 const query = "What does Chamath think about Davos?";
 
